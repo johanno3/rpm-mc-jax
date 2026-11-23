@@ -25,3 +25,11 @@ production: -0.018 +/- 0.029). The test suite includes this check.
 Not yet done: production-length 0.03 M, and more than one replicate per state. `slurm_numpy_ti.sh` runs 3 states x
 2 replicas on a SLURM cluster (edit the account line first); `compare_with_dataset.py` compares the resulting JSON
 files with the dataset.
+
+## JAX version
+
+`run_validation_jax.py` runs the same protocol with `rpm_mc.jaxmc` (jit-compiled, replicas vmapped). First time it on a
+cluster with a short smoke test to measure speed, for example
+`python validation/run_validation_jax.py results/jax_smoke.json --c 2.5 --replicas 1`
+(1000/300/500/4000 sweeps per state), then submit `slurm_jax_ti.sh` after editing the account line. The output
+files have the same format as the NumPy ones, so `compare_with_dataset.py results/*.json` compares both with the dataset.

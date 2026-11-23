@@ -18,5 +18,17 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install
         run: python -m pip install -e ".[test]"
-      - name: Run tests
+      - name: Run tests (JAX tests are skipped here)
+        run: python -m pytest -v
+
+  jax-implementation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install with JAX
+        run: python -m pip install -e ".[jax,test]"
+      - name: Run all tests, including JAX against the NumPy reference
         run: python -m pytest -v
