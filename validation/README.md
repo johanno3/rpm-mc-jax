@@ -33,3 +33,19 @@ cluster with a short smoke test to measure speed, for example
 `python validation/run_validation_jax.py results/jax_smoke.json --c 2.5 --replicas 1`
 (1000/300/500/4000 sweeps per state), then submit `slurm_jax_ti.sh` after editing the account line. The output
 files have the same format as the NumPy ones, so `compare_with_dataset.py results/*.json` compares both with the dataset.
+
+## JAX production results (8 replicates per state)
+
+Eight replicates per state, production-length sampling, N = 192 (files `results/jax_ti_*M.json`):
+
+| c (M) | mean +/- SEM | scatter (sd) | Run 20 mean | difference / combined uncertainty |
+|---|---|---|---|---|
+| 0.03 | -0.1705 +/- 0.0015 | 0.0044 | -0.1699 | -0.2 |
+| 0.3 | -0.3947 +/- 0.0016 | 0.0045 | -0.3995 | +1.3 |
+| 2.5 | -0.7155 +/- 0.0016 | 0.0046 | -0.7207 | +1.5 |
+
+The combined uncertainty uses the measured replicate scatter (0.0045) for the two-replicate reference mean (0.0032).
+The block-averaging errors printed per replicate overestimate the true scatter at the two denser states (0.0067 and
+0.0085 against 0.0045), so they are conservative. `make_figure.py` draws `validation_figure.png` from the stored
+results and `reference_run20_baseline.csv`. One NumPy production replicate at 0.3 M (-0.4085) lies about three scatter
+widths below the JAX mean; a few more NumPy replicates (`slurm_numpy_ti.sh`) would show whether this is chance.
