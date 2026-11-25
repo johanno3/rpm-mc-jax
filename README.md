@@ -1,6 +1,7 @@
 # rpm-mc-jax
 
 ![tests](https://github.com/johanno3/rpm-mc-jax/actions/workflows/tests.yml/badge.svg)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24501369.svg)](https://doi.org/10.5281/zenodo.24501369)
 
 Monte Carlo simulation of the **restricted primitive model (RPM) electrolyte** with periodic Ewald summation and
 thermodynamic integration of the ion-pair charging free energy, written as a transparent **NumPy reference** and a
@@ -76,6 +77,6 @@ baseline state (sigma = 4 A, lambda_B = 7.14 A, N = 192) at three concentrations
 
 ## Citation and licence
 
-See `CITATION.cff`. MIT licence for the code; the reference data in `validation/` are CC BY 4.0 (Nordstrand 2026).
+Cite the software via its Zenodo DOI, [10.5281/zenodo.24501369](https://doi.org/10.5281/zenodo.24501369), and the dataset via doi [10.17632/hkr6jbkypg.1](https://doi.org/10.17632/hkr6jbkypg.1) (see `CITATION.cff`). MIT licence for the code; the reference data in `validation/` are CC BY 4.0 (Nordstrand 2026).
 Developed with AI assistance (Claude, Anthropic); correctness rests on the tests and on the agreement with
 independently generated simulation data shown above.

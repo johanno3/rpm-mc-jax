@@ -5,6 +5,7 @@ type: software
 version: 0.1.0
 date-released: 2026-11-24
 license: MIT
+doi: "10.5281/zenodo.24501369"
 repository-code: "https://github.com/johanno3/rpm-mc-jax"
 authors:
   - family-names: Nordstrand
